@@ -12,9 +12,50 @@ import Profile from './Profile'
 import NotFound from '../NotFound'
 
 // 引入Home组件对应的样式文件
-import './index.css'
+import './index.scss'
 
 class Home extends Component {
+  renderNavBar = () => {
+    // 提取公共数据，优化底部导航栏，增加项目可维护性
+    const navBars = [
+      {
+        path: '/home',
+        styleName: 'iconfont icon-ind',
+        name: '首页'
+      },
+      {
+        path: '/home/findHouse',
+        styleName: 'iconfont icon-findHouse',
+        name: '找房'
+      },
+      {
+        path: '/home/news',
+        styleName: 'iconfont icon-infom',
+        name: '资讯'
+      },
+      {
+        path: '/home/profile',
+        styleName: 'iconfont icon-my',
+        name: '我的'
+      }
+    ]
+    return (
+      <ul className="navbar">
+          {
+            navBars.map((item) => {
+              return (
+                <li key={item.name}>
+                  <NavLink exact to={item.path}>
+                    <i className={item.styleName}></i>
+                    <p>{item.name}</p>
+                  </NavLink>
+                </li>
+              )
+            })
+          }
+        </ul>
+    )
+  }
   render() {
     return (
       <div className="home">
@@ -27,32 +68,7 @@ class Home extends Component {
           <Route component={NotFound}></Route>
         </Switch>
         {/* 声明式路由链接 */}
-        <ul className="navbar">
-          <li>
-            <NavLink exact to="/home">
-              <i className="iconfont icon-ind"></i>
-              <p>首页</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/findHouse">
-              <i className="iconfont icon-findHouse"></i>
-              <p>找房</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/news">
-              <i className="iconfont icon-infom"></i>
-              <p>资讯</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/home/profile">
-              <i className="iconfont icon-my"></i>
-              <p>我的</p>
-            </NavLink>
-          </li>
-        </ul>
+        {this.renderNavBar()}
       </div>
     )
   }
