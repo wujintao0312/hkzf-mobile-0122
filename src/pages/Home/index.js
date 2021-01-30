@@ -29,16 +29,28 @@ class Home extends Component {
         {/* 声明式路由链接 */}
         <ul className="navbar">
           <li>
-            <NavLink exact to="/home">首页</NavLink>
+            <NavLink exact to="/home">
+              <i className="iconfont icon-ind"></i>
+              <p>首页</p>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/home/findHouse">找房</NavLink>
+            <NavLink to="/home/findHouse">
+              <i className="iconfont icon-findHouse"></i>
+              <p>找房</p>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/home/news">资讯</NavLink>
+            <NavLink to="/home/news">
+              <i className="iconfont icon-infom"></i>
+              <p>资讯</p>
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/home/profile">我的</NavLink>
+            <NavLink to="/home/profile">
+              <i className="iconfont icon-my"></i>
+              <p>我的</p>
+            </NavLink>
           </li>
         </ul>
       </div>
